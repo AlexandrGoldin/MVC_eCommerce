@@ -1,0 +1,98 @@
+﻿@model IEnumerable<MVC_eCommerce.Models.Admin.ProductVM>
+
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card mb-4">
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="../Admin/Dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item active">Products</li>
+    </ol>
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Products
+        <a href="../Admin/ProductAdd" class="btn btn-info pull-right text-white"><i class="fa fa-plus"></i>Add New</a>
+    </div>
+    @if (TempData["SM"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SM"]
+        </div>
+    }
+    <div class="col-md-6">
+        <select id="SelectCategory" name="SelectCategory" style="margin-top:15px; margin-left:15px;">
+            <option value="0">All Products</option>
+            @foreach (var item in ViewBag.Categories)
+            {
+                if (ViewBag.SelectedCat == item.Value)
+                {
+                    <option selected="selected" value="@item.Value">@item.Text</option>
+                }
+                else
+                {
+                    <option value="@item.Value">@item.Text</option>
+                }
+            }
+        </select>
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Count</th>
+                    <th>Is Delete</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Count</th>
+                    <th>Is Delete</th>
+                    <th>Action</th>
+                </tr>
+            </tfoot>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @if (@item.ProductImage == null)
+                            {
+                                <img class="img-no_image"
+                                     style="height:60px;width:60px"
+                                     src="~/Images/no_image.png" />
+                            }
+                            else
+                            {
+                                <img class="img-responsive"
+                                     style="height:60px;width:60px"
+                                     src="~/ProductImg/@item.ProductImage" />
+                            }
+                        </td>
+                        <td>@item.ProductName</td>
+                        <td>@item.Price</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.IsDelete</td>
+                        <td>
+                            @Html.ActionLink("Edit", "ProductEdit", new { Id = item.Id })
+                            @Html.ActionLink("Delete", "ProductDelete", new { productId = item.Id })
+                        </td>
+                    </tr>
+                }
+            <tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts
+{   
+    <script src="~/Content/ShopJS/ProductsScript.js"></script>
+}

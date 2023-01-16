@@ -1,0 +1,72 @@
+﻿@model MVC_eCommerce.Models.Admin.CategoryVM
+
+@{
+    ViewBag.Title = "CategoryEdit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container">
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="../Admin/Categories">Categories</a></li>
+        <li class="breadcrumb-item active">CategoryEdit</li>
+    </ol>
+    @using (Html.BeginForm("CategoryEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Category Edit
+            </div>
+            <hr />
+            @if (TempData["SM"] != null)
+            {
+                <div class="alert alert-success">
+                    @TempData["SM"]
+                </div>
+            }
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+            <div class="card-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="card-body">
+                </div>
+                <br />
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IsDelete, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.RadioButton("IsDelete", "True") True
+                            @Html.ValidationMessageFor(model => model.IsDelete, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.RadioButton("IsDelete", "False") False
+                            @Html.ValidationMessageFor(model => model.IsDelete, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                        @Html.ActionLink("Cansel", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-danger" })
+                    </div>
+                    <div class="col">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

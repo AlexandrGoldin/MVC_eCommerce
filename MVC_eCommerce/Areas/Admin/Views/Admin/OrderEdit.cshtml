@@ -1,0 +1,65 @@
+﻿@model MVC_eCommerce.Models.Order.OrderVM
+
+@{
+    ViewBag.Title = "OrderEdit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="../Admin/GetOrderList">Orders</a></li>
+        <li class="breadcrumb-item active">Order Edit</li>
+    </ol>
+    @if (TempData["SM"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SM"]
+        </div>
+    }
+    @using (Html.BeginForm("OrderEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Order Edit
+            </div>
+            <hr />
+            @Html.AntiForgeryToken()
+            <div class="card-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.TotalPrice)
+                @Html.HiddenFor(model => model.OrderDate)
+                <div class="form-group">
+                    <label for="orderIsActive" class="col-sm-2 col-form-label">Order: Is Active</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <label for="orderStatus" class="col-sm-2 col-form-label">Edit Staus</label>
+                        @Html.DropDownListFor(model => model.StatusId, Model.StatusSelectList as SelectList, "---Select---", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.StatusId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-10">
+                        <label for="TotalPrice" class="col-md-3 col-sm-3 col-form-label">Total Price</label>
+                        @Html.EditorFor(model => model.TotalPrice, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TotalPrice, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                        @Html.ActionLink("Cansel", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-danger" })
+                    </div>
+                    <div class="col">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

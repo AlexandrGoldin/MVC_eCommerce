@@ -1,0 +1,148 @@
+﻿@model MVC_eCommerce.Models.Order.OrderVM
+
+@{
+    ViewBag.Title = "GetOrder";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="../Admin/GetOrderList">Orders</a></li>
+        <li class="breadcrumb-item active">Order</li>
+    </ol>
+
+    <div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Order details
+            </div>
+            <hr />
+            <dl class="card-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.OrderDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OrderDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ModifiedDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ModifiedDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TotalPrice)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TotalPrice)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.IsActive)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Status.StatusName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Status.StatusName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.User.CastomerName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.User.CastomerName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.User.Email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.User.Email)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.User.Address)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.User.Address)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.User.IpAddress)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.User.IpAddress)
+                </dd>
+            </dl>
+        </div>
+        <div>
+            <p>
+                @Html.ActionLink("Order Edit", "OrderEdit", new { orderId = Model.Id })
+            </p>
+        </div>
+        <div class="table">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Count</th>
+                        <th>Is Delete</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Count</th>
+                        <th>Is Delete</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model.Cart)
+                    {
+                        <tr>
+                            <td>
+                                @if (@item.Product.ProductImage == null)
+                                {
+                                    <img class="img-no_image"
+                                         style="height:60px;width:60px"
+                                         src="~/Images/no_image.png" />
+                                }
+                                else
+                                {
+                                    <img class="img-responsive"
+                                         style="height:60px;width:60px"
+                                         src="~/ProductImg/@item.Product.ProductImage" />
+                                }
+
+                            </td>
+                            <td>@item.Product.ProductName</td>
+                            <td>@item.Product.Price</td>
+                            <td>@item.Product.Quantity</td>
+                            <td>@item.Product.IsDelete</td>
+                        </tr>
+                    }
+                <tbody>
+            </table>
+        </div>
+        <div class="col">
+            @Html.ActionLink("Cansel", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-danger" })
+        </div>
+    </div>
+</div>

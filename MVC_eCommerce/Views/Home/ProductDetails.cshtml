@@ -1,0 +1,60 @@
+﻿@model MVC_eCommerce.Models.Admin.ProductVM
+<div class="container" style="background-color: white">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h2>@Model.ProductName </h2>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="background-color:white">
+        <div class="col-md-7">
+            <img class="img-product" style="height:420px;width:420px"
+                 src="~/ProductImg/@Model.ProductImage" />
+        </div>
+        <div class="col-md-5">
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-8">
+                <div class="row text-center product-price" style="background: #F5F5F6; padding: 14px 14px 14px 14px ">
+                    <div class="product-price" style="color:darkorange">
+                        <h3>@Model.Price $</h3>
+                    </div>
+                </div>
+                <div class="row" style="height:7px">
+
+                </div>
+                <div class="row text-center addtocart-button" style="background: #F5F5F6; padding: 20px 20px 20px 20px ">
+                    @using (Html.BeginForm("AddToCartPartial", "Cart", new { productId = @Model.Id }, FormMethod.Post))
+                     {
+                     <button type="submit" class="btn btn-primary">Add to Cart</button>
+                     }
+                </div>
+                <div class="row" style="height:7px">
+
+                </div>
+                <div class="row text-center cansel-button" style="background: #F5F5F6; padding: 20px 20px 20px 20px ">
+                    @Html.ActionLink("Cansel", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-danger" })
+                </div>
+            </div>
+            <div class="col-md-2">
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="descriprtion-header">Description</h4>
+        </div>
+        <div class="col-md-12">
+            <p class="product-description">
+                @Model.Description
+            </p>
+        </div>
+    </div>
+</div>
+
+<p>
+    @Html.ActionLink("Main Page", "Index", null, null, new { @class = "btn btn-info" })
+</p>

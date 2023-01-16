@@ -1,0 +1,118 @@
+﻿@model IEnumerable<MVC_eCommerce.Models.Admin.ProductVM>
+
+@using PagedList.Mvc;
+@using PagedList;
+
+@{
+    ViewBag.Title = ViewBag.CategoryName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="themeSlider" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#themeSlider" data-slide-to="0" class="active"></li>
+        <li data-target="#themeSlider" data-slide-to="1"></li>
+        <li data-target="#themeSlider" data-slide-to="2"></li>
+    </ol>
+
+    <div class="carousel-inner">
+        <div class="item active">
+            <div class="imgOverlay"></div>
+            <img style="height:320px;width:100%" src="../Images/1010 New huaweiForSliders.png ">
+            <div class="carousel-caption">
+                <h3>New</h3>
+            </div>
+        </div>
+        <div class="item">
+            <div class="imgOverlay"></div>
+            <img style="height:320px;width:100%" src="../Images/2020 New huaweiPhonesForSliders.png">
+            <div class="carousel-caption">
+                <h3>My phone</h3>
+            </div>
+        </div>
+        <div class="item">
+            <div class="imgOverlay"></div>
+            <img style="height:320px;width:100%" src="../Images/3030 New huawei GR5forSliders.png">
+            <div class="carousel-caption">
+                <h3>Latest</h3>
+            </div>
+        </div>
+    </div>
+
+    <a class="left carousel-control" href="#themeSlider" data-slide="prev">
+        <span class="fa fa-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#themeSlider" data-slide="next">
+        <span class="fa fa-chevron-right"></span>
+    </a>
+</div>
+
+<div class="olContent f1"><h2 style="color:black">Search Product/Category</h2></div>
+<form method="post">
+    <div class="olSearch fr">
+        <input type="text" name="search" placeholder="Enter Keyword" class="inputComn form-control" />
+        <div class="searchIcon">
+            <button type="submit" class="searchBtn">
+                <img src="~/Images/search-icon-14.png" />
+            </button>
+        </div>
+    </div>
+</form>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h2>@ViewBag.CategoryName <small>trend produrts</small> </h2>
+        </div>
+    </div>
+</div>
+<div class="row product-container">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3 col-md-3 col-sm-4 col-sx-6" style="margin-bottom:8px">
+            <div class="thumbnail product-item" style="height:310px">
+                <p>
+                    <a href="~/Home/ProductDetails?prodId=@item.ProductId">
+                        <img class="img-responsive" title="Click to View Product detail"
+                             style="height:160px;width:160px"
+                             src="~/ProductImg/@item.ProductImage" />
+                    </a>
+                </p>
+                <div class="caption">
+                    <h6><a href="~/Home/ProductDetails/@item.ProductId"> @item.ProductName</a></h6>
+                    <p class="price">@item.Price $</p>
+                    <p>
+                        @if (item.Quantity > 0)
+                        {
+                            using (Html.BeginForm("AddToCartPartial", "Cart", new { productId = item.ProductId }, FormMethod.Post))
+                            {
+                                <button type="submit" class="pull-right"><i class="fa fa-shopping-cart fa-lg" style='color: #d92164 '></i></button>
+                            }
+
+
+                        <p>Aviable</p>
+                    }
+                    else
+                    {
+                        <p>Not Aviable</p>
+                    }
+                        </p>
+                        <div class="product-item-badge">
+
+                            @if (item.IsFeatured == true)
+                            {
+                                <p>"New"</p>
+                            }
+                            else
+                            {
+                                <p>"Old"</p>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+</div>
+<div class="container">
+    @Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("CategorySelection", new { page, catId = ViewBag.SelectedCat }))
+</div>

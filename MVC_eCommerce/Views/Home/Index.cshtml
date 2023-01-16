@@ -1,0 +1,214 @@
+﻿@model  PagedList.IPagedList<MVC_eCommerce.Models.Admin.ProductVM>
+
+@using PagedList.Mvc;
+@using PagedList;
+
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row nav-menus">
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            @Html.Action("CategoryMenuPartial", "Home")
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-8  olSearch fr">
+            @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+            {
+                @Html.TextBox("searchString", ViewBag.CurrentSearch as string, new { placeholder = "Search Product/Category..." })
+                <div class="searchIcon">
+                    <button type="submit" class="searchBtn" value="Search">
+                        <img src="~/Images/search-icon-14.png" />
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+    <div id="themeSlider" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#themeSlider" data-slide-to="0" class="active"></li>
+            <li data-target="#themeSlider" data-slide-to="1"></li>
+            <li data-target="#themeSlider" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="row no-gutter">
+                    <div class="col-xs-4">
+                        <a href="~/Home/Index?catId=2">
+                            <img style="height:160px;width:100%" src="../Images/11smart_samsung_2new.png">
+                        </a>
+                        <div class="carousel-caption">
+                            <a href="~/?searchString=мышь" style="font-size: 22px; color: white">smartphones</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <a href="~/Home/Index?catId=4">
+                            <img style="height:160px;width:100%" src="../Images/12ps_msi_2.PNG">
+                        </a>
+                        <div class="carousel-caption">
+                            <a href="~/Home/Index?catId=4" style="font-size: 22px; color: white">desktops</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <a href="~/Home/Index?catId=4">
+                            <img style="height:160px;width:100%" src="../Images/10mouse_zetgamming_1new.png">
+                        </a>
+                        <div class="carousel-caption">
+                            <a href="~/Home/Index?catId=5" style="font-size: 22px; color: white">pc mouses</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="row no-gutter">
+                    <div class="col-xs-4">
+                        <a href="~/Home/Index?catId=1">
+                            <img style="height:160px;width:100%" src="../Images/21smart_samsung_2new.png">
+                        </a>
+                        <div class="carousel-caption">
+                            <a href="~/Home/Index?catId=5" style="font-size: 22px; color: white">smartphones</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <a href="~/?searchString=мышь">
+                            <img style="height:160px;width:100%" src="../Images/22tb_lenovo_3new.png">
+                        </a>
+                        <div class="carousel-caption">
+                            <a href="~/?searchString=мышь" style="font-size: 22px; color: white">tablets</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <a href="~/Home/Index?catId=3">
+                            <img style="height:160px;width:100%" src="../Images/23note_acer_1new.png">
+                        </a>
+                        <div class="carousel-caption">
+                            <a href="~/Home/Index?catId=5" style="font-size: 22px; color: white">notebooks</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="row no-gutter">
+                    <div class="col-xs-4">
+                        <a href="~/?searchString=клав">
+                            <img style="height:160px;width:100%" src="../Images/31desc_msi_1new2.png">
+                        </a>
+                        <div class="carousel-caption">
+                            <a href="~/?searchString=кл" style="font-size: 20px; color: white">keyboards</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <a href="~/?searchString=науш">
+                            <img style="height:160px;width:100%" src="../Images/32headph_smartbuy_1new1.png ">
+                        </a>
+                        <div class="carousel-caption">
+                            <a href="~/?searchString=науш" style="font-size: 20px; color: white">headphones</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <a href="~/?searchString=мон">
+                            <img style="height:160px;width:100%" src="../Images/33mon_msi_1_6new.png ">
+                        </a>
+                        <div class="carousel-caption">
+                            <a href="~/?searchString=мон" style="font-size: 20px; color: white">monitors</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="left carousel-control" href="#themeSlider" data-slide="prev">
+            <span class="fa fa-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#themeSlider" data-slide="next">
+            <span class="fa fa-chevron-right"></span>
+        </a>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-8 col-xs-9">
+            <div class="page-header">
+                <h2>Our Products <small>trend produrts</small> </h2>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-4 col-xs-3">
+            <div class="dropdown search-dropdown ">
+                <button class="btn btn-Light dropdown-toggle search-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sorting by price
+                </button>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Price desc", "Index", "Home", new { sortOrder = ViewBag.PriceSortDesc, currentFilter = ViewBag.CurrentFilter, catId = ViewBag.SelectedCat }, new { @class = "search-link-1" })</li>
+                    <li>@Html.ActionLink("Price asc", "Index", "Home", new { sortOrder = ViewBag.PriceSortAsc, currentFilter = ViewBag.CurrentFilter, catId = ViewBag.SelectedCat }, new { @class = "search-link-1" })</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div>
+        @if (TempData["SM"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["SM"]
+            </div>
+        }
+        else if (TempData["DM"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["DM"]
+            </div>
+        }
+    </div>
+
+    <div class="row product-container">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-3 col-md-3 col-sm-4 col-sx-6" style="margin-bottom:8px">
+                <div class="thumbnail product-item" style="height:310px">
+                    <p>
+                        <a href="~/Home/ProductDetails?prodId=@item.Id">
+                            <img class="img-responsive" title="Click to View Product detail"
+                                 style="height:160px;width:160px"
+                                 src="~/ProductImg/@item.ProductImage" />
+                        </a>
+                    </p>
+                    <div class="caption">
+                        <h6><a href="~/Home/ProductDetails?prodId=@item.Id"> @item.ProductName</a></h6>
+                        <p class="price">@item.Price $</p>
+                        <p>
+                            @if (item.Quantity > 0)
+                            {
+                                using (Html.BeginForm("AddToCartPartial", "Cart", new { productId = item.Id }, FormMethod.Post))
+                                {
+                                    <button type="submit" class="pull-right"><i title="cart" class="fa fa-shopping-cart fa-lg" style='color: #d92164 '></i></button>
+                                }
+
+                            <p>Aviable</p>
+                        }
+                        else
+                        {
+                            <p>Not Aviable</p>
+                        }
+                            </p >
+                            <div class="product-item-badge">
+
+                                @if (item.IsFeatured == true)
+                                {
+                                    <p>"New"</p>
+                                }
+                                else
+                                {
+                                    <p>"Old"</p>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+    </div>
+    <div class="PagedList">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+        @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index",
+            new { page, catId = ViewBag.SelectedCat, currentFilter = ViewBag.CurrentFilter, sortOrder = ViewBag.CurrentSort }))
+    </div>
+</div>
+
+
+

@@ -1,0 +1,104 @@
+﻿
+@model IEnumerable<MVC_eCommerce.Models.Home.CartItemVM>
+
+@{
+    ViewBag.Title = "Cart Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cart Details</h2>
+<div class="container">
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-danger">
+            <strong>@ViewBag.Message</strong>
+        </div>
+    }
+    else
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Price($)
+                </th>
+                <th>
+                    Count
+                </th>
+                <th>
+                    Image
+                </th>
+                <th>
+                    <!-- for links -->
+                </th>
+                <th>
+                    Line Total($)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                int lineTotal = Convert.ToInt32(item.Count * item.Product.Price);
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Product.ProductName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Product.Price)
+                    </td>
+                    <td class="qty@(item.Product.Id)">
+                        @Html.DisplayFor(modelItem => item.Count)
+                    </td>
+                    <td>
+                        <img class="img-cartDetails" src="~/ProductImg/@item.Product.ProductImage"
+                             style="cursor:pointer;height:100%;width:80px" />
+                    </td>
+                    <td>
+                        <a href="~/Cart/IncrementProduct?productId=@item.Product.Id" class="incproduct" data-id="@item.Product.Id">
+                            <i title="plus" class="fa fa-plus" style="padding-right:7px"></i>
+                        </a>
+                        <a href="~/Cart/DecrementProduct?productId=@item.Product.Id" class="decproduct" data-id="@item.Product.Id">
+                            <i title="minus" class="fa fa-minus" style="padding-right:7px"></i>
+                        </a>
+                        <a href="~/Cart/RemoveFromCart?productId=@item.Product.Id" class="removeproduct" data-id="@item.Product.Id">
+                            <i title="delete" class="fa fa-trash" style="font-size:24px;color:red"></i>
+                        </a>
+                    </td>
+                    <td class="total@(item.Product.Id)">
+                        @lineTotal
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td class="grandtotal" colspan="6" style="text-align:right">
+                    <b>Grand total: <span>@ViewBag.GrandTotal$</span></b>
+                </td>
+            </tr>
+        </table>
+    }
+    <div class="row">
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-6">
+            @using (Html.BeginForm("CreateOrder", "Order", FormMethod.Get))
+            {
+                @Html.HiddenFor(m=>m.ToList()[0])
+           
+                <p>
+                    <input type="submit" class="btn btn-danger btn-block" value="Order" />
+                </p>
+            }
+        </div>
+        <div class="col-md-3">
+
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script src="~/Content/ShopJS/IncrementProductScript.js"></script>
+}

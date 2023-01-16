@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MVC_eCommerce.Models.Order.OrderDetailVM>
+@using MVC_eCommerce.Models
+@{
+    ViewBag.Title = "Order Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row order-container">
+    <div class="text-left title">
+        <h3 class="current-orders " style="font-weight: 600;">All orders(@Model.Count())</h3>
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="row thumbnail product-item">
+            <div class="row row1">
+                <div class="col-md-6 col-sm-6 col-sx-6 ProductName">
+                    <label for="orderDate" class="col-md-6 col-sm-6 order-price">Order dated @item.Order.OrderDate.Value.ToString("dd/MM/yy")</label>
+                </div>
+                <div class="col-md-6 col-sm-6 col-sx-6 text-right">
+                    <h4 class="order-price" style="font-weight:600; margin-right:20px;">
+                        @Html.DisplayFor(modelItem => item.Order.TotalPrice) $
+                    </h4>
+                </div>
+            </div>
+            <div class="row product-container">
+                @foreach (var p in item.ProductImgList)
+                {
+                    <div class="col-lg-1 col-md-1 col-sm-2 col-sx-2">
+                        <a>
+                            <img class="img-responsive"
+                                 style="height: 80px; width: 80px; margin: 10px 10px 10px 10px"
+                                 src="~/ProductImg/@p" />
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+<div class="col">
+    @Html.ActionLink("Cansel", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-danger" })
+</div>
+
+

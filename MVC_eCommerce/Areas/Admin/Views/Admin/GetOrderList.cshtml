@@ -1,0 +1,93 @@
+﻿@model IEnumerable<MVC_eCommerce.Models.Order.OrderVM>
+
+@{
+    ViewBag.Title = "GetOrderList";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card mb-4">
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="../Admin/Dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item active">Orders</li>
+    </ol>
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Orders
+    </div>
+    @if (TempData["SM"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SM"]
+        </div>
+    }
+<div class="card-body">
+    <table id="datatablesSimple">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ModifiedDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cart)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status.StatusName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.User.CastomerName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @(item.OrderDate.HasValue ? item.OrderDate.Value.ToString("dd/MM/yy") : "Is Empty")
+                    </td>
+                    <td>
+                        @(item.ModifiedDate.HasValue ? item.ModifiedDate.Value.ToString("dd/MM/yy") : "Is Empty")
+                    </td>
+                    <td>
+                        @foreach (var c in item.Cart)
+                        {
+
+                            @Html.Raw("-" + c.Product.ProductName.Substring(0, 16) + "(" + @c.Count + ")" + "/<br>")
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status.StatusName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.CastomerName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "OrderEdit", new { orderId = item.Id }) |
+                        @Html.ActionLink("Details", "GetOrder", new { orderId = item.Id }) |
+                        @Html.ActionLink("Delete", "OrderDelete", new { orderId = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="col">
+        @Html.ActionLink("Cansel", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-danger" })
+    </div>
+</div>
+</div>

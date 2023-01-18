@@ -3,49 +3,86 @@
     <div class="row">
         <div class="col-md-12">
             <div class="page-header">
-                <h2>@Model.ProductName </h2>
+                <h2 style="margin-left: 15px">@Model.ProductName </h2>
             </div>
         </div>
     </div>
     <div class="row" style="background-color:white">
-        <div class="col-md-7">
+        <div class="col-lg-7 col-md-7 col-sm-8 col-xs-12 hidden-xs">
             <img class="img-product" style="height:420px;width:420px"
                  src="~/ProductImg/@Model.ProductImage" />
         </div>
-        <div class="col-md-5">
-            <div class="col-md-2">
+        <div class="col-xs-6 visible-xs">
+            <img class="img-product" style="margin-top:15px; height:210px;width:210px"
+                 src="~/ProductImg/@Model.ProductImage" />
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-4 col-xs-12 hidden-sm hidden-xs">
+            <div class="col-lg-2 col-md-1">
 
             </div>
-            <div class="col-md-8">
-                <div class="row text-center product-price" style="background: #F5F5F6; padding: 14px 14px 14px 14px ">
-                    <div class="product-price" style="color:darkorange">
-                        <h3>@Model.Price $</h3>
+            <div class="col-lg-8 col-md-10">
+                <div class="wrapper" style="margin-top:30px">
+                    <div class="row text-center product-price" style="background: #F5F5F6; padding: 14px 14px 14px 14px ">
+                        <div class="product-price" style="color:darkorange">
+                            <h3>@Model.Price $</h3>
+                        </div>
+                    </div>
+                    <div class="row" style="height:7px">
+
+                    </div>
+                    <div class="row text-center addtocart-button" style="background: #F5F5F6; padding: 20px 20px 20px 20px ">
+                        @using (Html.BeginForm("AddToCartPartial", "Cart", new { productId = @Model.Id }, FormMethod.Post))
+                        {
+                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                        }
+                    </div>
+                    <div class="row" style="height:7px">
+
+                    </div>
+                    <div class="row text-center cansel-button" style="background: #F5F5F6; padding: 20px 20px 20px 20px ">
+                        @Html.ActionLink("Cansel", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-danger" })
                     </div>
                 </div>
-                <div class="row" style="height:7px">
+            </div>
+            <div class="col-lg-2 col-md-1">
 
-                </div>
-                <div class="row text-center addtocart-button" style="background: #F5F5F6; padding: 20px 20px 20px 20px ">
-                    @using (Html.BeginForm("AddToCartPartial", "Cart", new { productId = @Model.Id }, FormMethod.Post))
-                     {
-                     <button type="submit" class="btn btn-primary">Add to Cart</button>
-                     }
-                </div>
-                <div class="row" style="height:7px">
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-6 visible-sm visible-xs">
+            <div class="col-md-1">
 
-                </div>
-                <div class="row text-center cansel-button" style="background: #F5F5F6; padding: 20px 20px 20px 20px ">
-                    @Html.ActionLink("Cansel", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-danger" })
+            </div>
+            <div class="col-md-10">
+                <div class="wrapper" style="margin-top:30px">
+                    <div class="row text-center product-price" style="background: #F5F5F6; padding: 5px 5px 5px 5px ">
+                        <div class="product-price" style="color:darkorange">
+                            <h3>@Model.Price $</h3>
+                        </div>
+                    </div>
+                    <div class="row" style="height:7px">
+
+                    </div>
+                    <div class="row text-center addtocart-button" style="background: #F5F5F6; padding: 10px 10px 10px 10px ">
+                        @using (Html.BeginForm("AddToCartPartial", "Cart", new { productId = @Model.Id }, FormMethod.Post))
+                        {
+                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                        }
+                    </div>
+                    <div class="row" style="height:7px">
+                    </div>
+                    <div class="row text-center cansel-button" style="background: #F5F5F6; padding: 10px 10px 10px 10px ">
+                        @Html.ActionLink("Cansel", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-danger" })
+                    </div>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
 
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
-            <h4 class="descriprtion-header">Description</h4>
+            <h4 class="descriprtion-header"style="margin-left: 15px">Description</h4>
         </div>
         <div class="col-md-12">
             <p class="product-description">
@@ -53,8 +90,9 @@
             </p>
         </div>
     </div>
+    <div>
+        @Html.ActionLink("Main Page", "Index", null, null, new { @class = "btn btn-info", @style="margin-left: 15px" })
+    </div>
 </div>
 
-<p>
-    @Html.ActionLink("Main Page", "Index", null, null, new { @class = "btn btn-info" })
-</p>
+

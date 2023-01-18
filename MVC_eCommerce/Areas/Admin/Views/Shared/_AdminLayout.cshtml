@@ -23,6 +23,25 @@
                 <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
             </div>
         </form>
+        <div class="col-md-1 col-sm-1 col-xs-1 text-right">
+            <div class="log" style="padding-left: 20px">
+                @if (Request.IsAuthenticated)
+                {
+                    <a title="sign out" href="~/Account/Logout"> <i class="fa fa-sign-out fa-lg" style="color: gray"></i></a>
+                }
+                else
+                {
+                    if (ViewBag.Title == "Login")
+                    {
+                        <a title="sign in" href="~/Account/Login"> <i class="fa fa-sign-in fa-lg" style="color:blue"></i></a>
+                    }
+                    else
+                    {
+                        <a title="sign in" href="~/Account/Login"> <i class="fa fa-sign-in fa-lg"></i></a>
+                    }
+                }
+            </div>
+        </div>
     </nav>
     <!-- Sidebar -->
     <div id="layoutSidenav">

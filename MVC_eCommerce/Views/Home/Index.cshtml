@@ -34,11 +34,11 @@
             <div class="item active">
                 <div class="row no-gutter">
                     <div class="col-xs-4">
-                        <a href="~/Home/Index?catId=2">
+                        <a href="~/Home/Index?catId=1">
                             <img style="height:160px;width:100%" src="../Images/11smart_samsung_2new.png">
                         </a>
                         <div class="carousel-caption">
-                            <a href="~/?searchString=мышь" style="font-size: 22px; color: white">smartphones</a>
+                            <a href="~/Home/Index?catId=1" style="font-size: 22px; color: white">smartphones</a>
                         </div>
                     </div>
                     <div class="col-xs-4">
@@ -50,11 +50,11 @@
                         </div>
                     </div>
                     <div class="col-xs-4">
-                        <a href="~/Home/Index?catId=4">
+                        <a href="~/?searchString=мышь">
                             <img style="height:160px;width:100%" src="../Images/10mouse_zetgamming_1new.png">
                         </a>
                         <div class="carousel-caption">
-                            <a href="~/Home/Index?catId=5" style="font-size: 22px; color: white">pc mouses</a>
+                            <a href="~/?searchString=мышь" style="font-size: 22px; color: white">pc mouses</a>
                         </div>
                     </div>
                 </div>
@@ -66,15 +66,15 @@
                             <img style="height:160px;width:100%" src="../Images/21smart_samsung_2new.png">
                         </a>
                         <div class="carousel-caption">
-                            <a href="~/Home/Index?catId=5" style="font-size: 22px; color: white">smartphones</a>
+                            <a href="~/Home/Index?catId=1" style="font-size: 22px; color: white">smartphones</a>
                         </div>
                     </div>
                     <div class="col-xs-4">
-                        <a href="~/?searchString=мышь">
+                        <a href="~/Home/Index?catId=2">
                             <img style="height:160px;width:100%" src="../Images/22tb_lenovo_3new.png">
                         </a>
                         <div class="carousel-caption">
-                            <a href="~/?searchString=мышь" style="font-size: 22px; color: white">tablets</a>
+                            <a href="~/Home/Index?catId=2" style="font-size: 22px; color: white">tablets</a>
                         </div>
                     </div>
                     <div class="col-xs-4">
@@ -82,7 +82,7 @@
                             <img style="height:160px;width:100%" src="../Images/23note_acer_1new.png">
                         </a>
                         <div class="carousel-caption">
-                            <a href="~/Home/Index?catId=5" style="font-size: 22px; color: white">notebooks</a>
+                            <a href="~/Home/Index?catId=3" style="font-size: 22px; color: white">notebooks</a>
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
             <div class="item">
                 <div class="row no-gutter">
                     <div class="col-xs-4">
-                        <a href="~/?searchString=клав">
+                        <a href="~/?searchString=кл">
                             <img style="height:160px;width:100%" src="../Images/31desc_msi_1new2.png">
                         </a>
                         <div class="carousel-caption">
@@ -157,17 +157,29 @@
     </div>
 
     <div class="row product-container">
+
         @foreach (var item in Model)
         {
-            <div class="col-lg-3 col-md-3 col-sm-4 col-sx-6" style="margin-bottom:8px">
-                <div class="thumbnail product-item" style="height:310px">
-                    <p>
-                        <a href="~/Home/ProductDetails?prodId=@item.Id">
-                            <img class="img-responsive" title="Click to View Product detail"
-                                 style="height:160px;width:160px"
-                                 src="~/ProductImg/@item.ProductImage" />
-                        </a>
-                    </p>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 product-card">
+                <div class="thumbnail product-item">
+                    <div class="product-img hidden-sm hidden-xs">
+                        <p>
+                            <a href="~/Home/ProductDetails?prodId=@item.Id">
+                                <img class="img-responsive" title="Click to View Product detail"
+                                     style="height:160px;width:160px"
+                                     src="~/ProductImg/@item.ProductImage" />
+                            </a>
+                        </p>
+                    </div>
+                    <div class="product-zoom-out-img visible-sm visible-xs">
+                        <p>
+                            <a href="~/Home/ProductDetails?prodId=@item.Id">
+                                <img class="img-responsive" title="Click to View Product detail"
+                                     style="height:100px;width:100px"
+                                     src="~/ProductImg/@item.ProductImage" />
+                            </a>
+                        </p>
+                    </div>
                     <div class="caption">
                         <h6><a href="~/Home/ProductDetails?prodId=@item.Id"> @item.ProductName</a></h6>
                         <p class="price">@item.Price $</p>

@@ -1,5 +1,18 @@
 # MVC_eCommerce
 ### Online store emulator in ASP.NET MVC C#
+#### Stack:
++ ASP.NET Core 3.1 MVC
++ IHttpClientFactory
++ Mvc.Razor
++ Newtonsoft.Json
++ LINQ
++ Jquery
++ Bootstrap
++ HTML
++ CSS
++ MS SQL Server
++ Entity Framework Core
++ Data Transfer Object
 ______________
 ![home index1_3new](https://user-images.githubusercontent.com/50864552/213481442-19259fae-3cd5-4279-8db8-f2ba3ca59897.png)
 __________________________

@@ -1,17 +1,23 @@
 # MVC_eCommerce
 ### Online store emulator in ASP.NET MVC C#
 #### Stack:
-+ ASP.NET Core 3.1 MVC
-+ IHttpClientFactory
++ ASP.NET MVC 5
++ GenericUnitOfWork
++ Forms Authentication
++ AutoMapper
++ PagedList.Mvc
 + Mvc.Razor
++ Start Bootstrap SB Admin(template for admin area)
++ Bootstrap
 + Newtonsoft.Json
 + LINQ
++ Responsive design
 + Jquery
-+ Bootstrap
 + HTML
 + CSS
++ T SQL
 + MS SQL Server
-+ Entity Framework Core
++ Entity Framework
 + Data Transfer Object
 ______________
 ![home index1_3new](https://user-images.githubusercontent.com/50864552/213481442-19259fae-3cd5-4279-8db8-f2ba3ca59897.png)

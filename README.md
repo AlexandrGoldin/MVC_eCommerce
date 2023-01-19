@@ -10,3 +10,5 @@ ________
 ![order checoutOrder_PastOrderDetails1new](https://user-images.githubusercontent.com/50864552/213482527-e295dcee-88af-4680-988d-ddc491a3ebba.png)
 ___________
 ![admin products_productEdit1new](https://user-images.githubusercontent.com/50864552/213479252-790de912-c4c3-4f3c-88bb-7b1aa6df6c2d.png)
+__________________
+![admin categories_orders3new](https://user-images.githubusercontent.com/50864552/213482951-865346f0-e431-437a-93d8-cb9ce7d53775.png)

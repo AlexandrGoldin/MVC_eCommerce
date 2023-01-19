@@ -38,18 +38,21 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                    <tr>
-                        <td>@(Model.IndexOf(item)+1)</td>
-                        <td>@item.CategoryName</td>
-                        <td>@item.IsDelete</td>
-                        <td>
-                            @Html.ActionLink("Edit", "CategoryEdit", new { categoryId = item.Id })
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>@(Model.IndexOf(item)+1)</td>
+                            <td>@item.CategoryName</td>
+                            <td>@item.IsDelete</td>
+                            <td>
+                                @Html.ActionLink("Edit", "CategoryEdit", new { categoryId = item.Id })
+                            </td>
+                        </tr>
                     }
 
                 <tbody>
             </table>
+            <div class="col">
+                @Html.ActionLink("Cansel", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-danger" })
+            </div>
         </div>
     </div>
 </div>

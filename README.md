@@ -20,6 +20,8 @@
 + Entity Framework
 + Data Transfer Object
 ______________
++ На главная странице(Home/Index) в меню расположен кликабельный логотип, иконки заказов, корзина покупок, вход для админа. В подменю находится кнопка "Каталог" с выпадающим списком по категориям продуктов и форма поиска по продуктам/категориям.
+
 ![home index1_3new](https://user-images.githubusercontent.com/50864552/213481442-19259fae-3cd5-4279-8db8-f2ba3ca59897.png)
 __________________________
 ![home productDetails1_2new](https://user-images.githubusercontent.com/50864552/213481903-27ca88e8-6c01-4d62-b701-9ada3b8cf0d8.png)

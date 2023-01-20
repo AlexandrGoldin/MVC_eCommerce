@@ -34,6 +34,8 @@ ______________
 
 ![cart_order checoutCart_createOrder1](https://user-images.githubusercontent.com/50864552/213482189-3f31556a-ccb7-4eb1-8fbc-6848cbb5dadc.png)
 ________
++ Стр Current orders отображает изображения заказанных продуктов и стоимостьу заказа. Количество заказов за текущую сессию отображается в основном меню рядом с иконкой Заказы. Клик по иконке Заказы в основном меню ведет на стр Current orders. Кнопка All your orders открывает стр All orders с информацией о текущих и предидущих заказах.
+
 ![order checoutOrder_PastOrderDetails1new](https://user-images.githubusercontent.com/50864552/213482527-e295dcee-88af-4680-988d-ddc491a3ebba.png)
 ___________
 ![admin products_productEdit1new](https://user-images.githubusercontent.com/50864552/213479252-790de912-c4c3-4f3c-88bb-7b1aa6df6c2d.png)

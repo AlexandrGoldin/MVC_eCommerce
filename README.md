@@ -27,6 +27,7 @@ ______________
 ![home index1_3new](https://user-images.githubusercontent.com/50864552/213481442-19259fae-3cd5-4279-8db8-f2ba3ca59897.png)
 __________________________
 + Кнопка Add to cart на странице продукта ведет на страцицу Cart Details для оформлениия заказа.
++ Справа показан Responsive design страницы на дисплее col-xs.
 
 ![home productDetails1_2new](https://user-images.githubusercontent.com/50864552/213481903-27ca88e8-6c01-4d62-b701-9ada3b8cf0d8.png)
 ______________

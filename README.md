@@ -26,11 +26,11 @@ ______________
 
 ![home index1_3new](https://user-images.githubusercontent.com/50864552/213481442-19259fae-3cd5-4279-8db8-f2ba3ca59897.png)
 __________________________
-+ Кнопка покупки на странице продукта ведет на страцицу Cart Details.
++ Кнопка Add to cart на странице продукта ведет на страцицу Cart Details для оформлениия заказа.
 
 ![home productDetails1_2new](https://user-images.githubusercontent.com/50864552/213481903-27ca88e8-6c01-4d62-b701-9ada3b8cf0d8.png)
 ______________
-+ На страцице Cart Details выводится изображение и описание продукта. Доступно изменение количества продукта или его удаление. 
++ На страцице Cart Details выводится изображения и описание выбранных продуктов. Доступно изменение количества продукта или его удаление. Кнопка Ordr ведёт на стр Create Order c инф-ей о продуктах, итоговой ценой и формой для ввода данных о покупателе. После заполнения формы клик по Order откроет стр Current orders.
 
 ![cart_order checoutCart_createOrder1](https://user-images.githubusercontent.com/50864552/213482189-3f31556a-ccb7-4eb1-8fbc-6848cbb5dadc.png)
 ________

@@ -2,22 +2,18 @@
 ### Online store emulator in ASP.NET MVC C#
 #### Stack:
 + ASP.NET MVC 5
-+ GenericUnitOfWork
++ Generic Repository & Unit Of Work Pattern
 + Forms Authentication
-+ AutoMapper
-+ PagedList.Mvc
-+ PagedList
++ AutoMapper                                                        
++  PagedList/PagedList.Mvc
 + Mvc.Razor
-+ Start Bootstrap SB Admin(template for admin area)
-+ Bootstrap
++ Start Bootstrap SB Admin(template for admin area) 
 + Newtonsoft.Json
 + LINQ
 + Responsive design
 + Jquery
-+ HTML
-+ CSS
-+ T SQL
-+ MS SQL Server
++ Bootstrap/HTML/CSS
++ T SQL/MS SQL Server
 + Entity Framework
 + Data Transfer Object
 ______________

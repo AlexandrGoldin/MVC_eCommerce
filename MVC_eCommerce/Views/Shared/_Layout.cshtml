@@ -14,20 +14,12 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-sm-8 col-xs-8">
+            <div class="col-md-9 col-sm-9 col-xs-9">
                 <div class="logo">
                     <h1><a href="~/Home/Index">MVC <span title="to main page">eCommerce</span> </a></h1>
                     <p>Online Shop emulator</p>
                 </div>
-            </div>           
-            <div class="col-md-1 col-sm-1 col-xs-1 text-right">
-                @if ((Request.IsAuthenticated))
-                {
-                    <div class="profile" style="padding-top:30px; padding-right:15px">
-                        <a title="profile" href="~/Account/UserProfile"> <i class="fa fa-user fa-lg"></i></a>
-                    </div>
-                }
-            </div>           
+            </div>
             <div class="col-md-1 col-sm-1 col-xs-1 text-right">
                 @Html.Action("OrderPartial", "Order")
             </div>
@@ -36,21 +28,7 @@
             </div>
             <div class="col-md-1 col-sm-1 col-xs-1 text-right">
                 <div class="log" style="padding-top: 30px; padding-right: 16px">
-                    @if (Request.IsAuthenticated)
-                    {
-                        <a title="sign out" href="~/Account/Logout"> <i class="fa fa-sign-out fa-lg"></i></a>
-                    }
-                    else
-                    {
-                        if (ViewBag.Title == "Login")
-                        {
-                            <a title="sign in" href="~/Account/Login"> <i class="fa fa-sign-in fa-lg" style="color:blue"></i></a>
-                        }
-                        else
-                        {
-                            <a title="sign in" href="~/Account/Login"> <i class="fa fa-sign-in fa-lg"></i></a>
-                        }
-                    }
+                    <a title="for admin" href="~/Account/Login"> <i class="fa fa-sign-in fa-lg"></i></a>
                 </div>
             </div>
         </div>

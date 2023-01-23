@@ -1,5 +1,7 @@
 # MVC_eCommerce
 ### Online store emulator in ASP.NET MVC C#
+
+💻 http://ecommerce2023.somee.com
 + Sql script for this project here https://github.com/AlexandrGoldin/MVC_eCommerce_SqlScript
 #### Stack:
 + ASP.NET MVC 5

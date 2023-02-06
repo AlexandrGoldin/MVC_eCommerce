@@ -26,6 +26,8 @@ namespace MVC_eCommerce.Helper
                 CartItemVM cartItemVM = AutoMapper.Mapper.Map<CartItemVM>(item);
                 cartItemVM.TotalPrice = item.Count * item.Product.Price;
                 cartItemVM.Product = AutoMapper.Mapper.Map<ProductVM>(product);
+                cartItemVM.Product.Quantity = item.Count;
+
 
                 cartItemVMlList.Add(cartItemVM);
             }
